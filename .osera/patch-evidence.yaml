@@ -1,7 +1,7 @@
 # Licensed under the Apache License, Version 2.0: https://www.apache.org/licenses/LICENSE-2.0
 schema: osera-patch-evidence/0.1.0
 producer: moderne
-release: 5.3.39.1-osera-00023
+release: 5.3.39.1-osera-00024
 baseline: v5.3.39+patch.baseline
 fixes:
   - cve: CVE-2016-1000027
@@ -228,12 +228,20 @@ fixes:
     basis: adapted
     artifacts:
       - org.springframework:spring-expression
-    note: "New in this release; ported onto 5.3.39; fixed at 5.3.39.1-backpatch-00023 (backpatch-spring-framework@6659bd6). Behaviour change, as upstream: a BigDecimal or BigInteger power whose result exceeds spring.expression.maxBigPowerBits (default 1,000,000 bits) fails with SpelEvaluationException EL1086."
+    note: Carried from 5.3.39.1-backpatch-00023; ported onto 5.3.39; fixed at 5.3.39.1-backpatch-00023 (backpatch-spring-framework@6659bd6).
+  - cve: CVE-2026-59283
+    upstream_fix_url: https://github.com/spring-projects/spring-framework/commit/0d08f8dfaf26eb0a96942ceec7ccc1f2fe1d09dc
+    advisory_url: https://nvd.nist.gov/vuln/detail/CVE-2026-59283
+    patch_commit_url: https://github.com/moderne-backpatch-alliance/backpatch-spring-framework/commit/a48343e
+    basis: adapted
+    artifacts:
+      - org.springframework:spring-expression
+    note: "New in this release; ported onto 5.3.39; fixed at 5.3.39.1-backpatch-00024 (backpatch-spring-framework@a48343e). Behaviour change, as upstream: SimpleEvaluationContext no longer compiles expressions, and does not run an expression compiled elsewhere, unless built with withCompilationSupported()."
 tests:
-  commit: f583e16a81a458d3f6b1c1529fa405528e7bf371
-  command: ./gradlew --no-daemon -I <alliance>/ecosystem/gradle/init-backpatch.gradle -Dbackpatch.version=5.3.39.1-osera-00023 -Dbackpatch.repository.url=file:///nonexistent -Dbackpatch.compile.jdk=8 :spring-expression:test --rerun-tasks --continue
+  commit: 3352c7b8a2f4914ced391dba5b030ca6801ade3d
+  command: ./gradlew --no-daemon -I <alliance>/ecosystem/gradle/init-backpatch.gradle -Dbackpatch.version=5.3.39.1-osera-00024 -Dbackpatch.repository.url=file:///nonexistent -Dbackpatch.compile.jdk=8 :spring-expression:test --rerun-tasks --continue
   runtime: OpenJDK 1.8.0_382 (Zulu), Gradle wrapper of the repository
-  report: spring-expression-5.3.39.1-osera-00023-tests.zip
-  report_sha256: ea6442ee67cd4739525d49eba47b2f0e0f4fdf1306175ffd90aa17fe89805b86
+  report: spring-expression-5.3.39.1-osera-00024-tests.zip
+  report_sha256: 4aeeef6dacb1c7b81aa95a9d4cefcc8e9d2c1b7f1ed711bff39b6f57469cac93
   result: pass
-  note: the full module suites (spring-expression 814 tests run), 0 failed, 0 errors, 19 skipped, at the tested commit
+  note: the full module suites (spring-expression 821 tests run), 0 failed, 0 errors, 19 skipped, at the tested commit
