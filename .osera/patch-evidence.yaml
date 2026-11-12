@@ -1,7 +1,7 @@
 # Licensed under the Apache License, Version 2.0: https://www.apache.org/licenses/LICENSE-2.0
 schema: osera-patch-evidence/0.1.0
 producer: moderne
-release: 5.3.39.1-osera-00025
+release: 5.3.39.1-osera-00026
 baseline: v5.3.39+patch.baseline
 fixes:
   - cve: CVE-2016-1000027
@@ -238,9 +238,9 @@ fixes:
       - org.springframework:spring-expression
     note: Carried from 5.3.39.1-backpatch-00024; ported onto 5.3.39; fixed at 5.3.39.1-backpatch-00024 (backpatch-spring-framework@a48343e).
 tests:
-  commit: 8367833b6c89a73611073217d946b96df12904fd
+  commit: cf729b1c884c574199ce5a28e2fc8158f132aabb
   command: none in this repository
   runtime: none, no build or test ran for this release
   report: carried, see the evidence of the release named in the note
   result: pass
-  note: "this release is a tooling update, it carries no new fix, nothing ran here; its test provenance is tooling-2026-11-03-spring-framework-5.3: a tooling update of moderne-backpatch-alliance/backpatch-spring-framework at v5.3.39.1-backpatch-00024, whose .backpatch/patch-evidence.yaml says what ran"
+  note: "this release is a tooling update, it carries no new fix, nothing ran here; its test provenance is tooling-2026-11-12-spring-framework-5.3: a tooling update of moderne-backpatch-alliance/backpatch-spring-framework at v5.3.39.1-backpatch-00025, whose .backpatch/patch-evidence.yaml says what ran"
